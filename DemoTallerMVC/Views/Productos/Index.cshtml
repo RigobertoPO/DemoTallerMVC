@@ -1,0 +1,42 @@
+﻿@model List<DemoTallerMVC.Models.Producto>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Agregar producto", "Nuevo")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Precio
+        </th>
+        <th>
+            Existencia
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in (List<DemoTallerMVC.Models.Producto>)ViewData["productos"])
+            {
+                <tr>
+                    <td>
+                        @item.Nombre
+                    </td>
+                    <td>
+                        @item.Precio
+                    </td>
+                    <td>
+                        @item.Existencia
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = @item.Id }) |
+                        @Html.ActionLink("Detalles", "Detalles", new { id = @item.Id }) |
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = @item.Id })
+                    </td>
+                </tr>
+            }
+</table>
